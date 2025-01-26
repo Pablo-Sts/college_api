@@ -21,6 +21,6 @@ export class TeacherEntity {
     @Column({name: "dt_birth"})
     birthDate: Date;
 
-    @Column({name: "tx_phone_number"})
+    @Column({name: "tx_phone"})
     phoneNumber: string;
 }

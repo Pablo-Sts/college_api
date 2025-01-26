@@ -16,6 +16,7 @@ export class StudentDto {
     name: string;
 
     @IsEnum(StudentSexEnum)
+    @IsOptional()
     sex: string;
 
     @IsDateString()
