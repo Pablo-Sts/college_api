@@ -6,6 +6,6 @@ export class TitleEntity {
     @PrimaryGeneratedColumn({name: "id_title"})
     id: number;
 
-    @Column({name: "tx_descripton"})
-    Description: string;
+    @Column({name: "tx_description"})
+    description: string;
 }
