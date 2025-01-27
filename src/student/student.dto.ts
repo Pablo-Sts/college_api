@@ -1,4 +1,4 @@
-import { IsDateString, IsEnum, IsNumber, IsOptional, IsString, MaxLength, MinLength } from "class-validator";
+import { IsDateString, IsEnum, IsNumber, IsOptional, IsString, MaxLength, Min, MinLength } from "class-validator";
 
 export enum StudentSexEnum {
     M = "M",
@@ -8,6 +8,7 @@ export enum StudentSexEnum {
 export class StudentDto {
     @IsNumber()
     @IsOptional()
+    @Min(1)
     id: number;
 
     @IsString()

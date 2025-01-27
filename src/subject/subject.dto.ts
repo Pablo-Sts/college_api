@@ -10,12 +10,15 @@ import {
 export class SubjectDto {
   @IsNumber()
   @IsOptional()
+  @Min(1)
   id: number;
 
   @IsNumber()
+  @Min(1)
   courseId: number;
 
   @IsNumber()
+  @Min(1)
   subjectTypeId: number;
 
   @IsString()

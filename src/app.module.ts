@@ -10,9 +10,10 @@ import { CourseTypeModule } from './course_type/course_type.module';
 import { CourseModule } from './course/course.module';
 import { SubjectTypeModule } from './subject_type/subject_type.module';
 import { SubjectModule } from './subject/subject.module';
+import { InstructModule } from './instruct/instruct.module';
 
 @Module({
-  imports: [StudentModule, DbModule, TeacherModule, TitleModule, InstitutionModule, CourseTypeModule, CourseModule, SubjectTypeModule, SubjectModule],
+  imports: [StudentModule, DbModule, TeacherModule, TitleModule, InstitutionModule, CourseTypeModule, CourseModule, SubjectTypeModule, SubjectModule, InstructModule],
   controllers: [AppController],
   providers: [AppService],
 })

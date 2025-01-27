@@ -1,8 +1,9 @@
-import { IsNumber, IsOptional, IsString, MaxLength, MinLength } from "class-validator";
+import { IsNumber, IsOptional, IsString, MaxLength, Min, MinLength } from "class-validator";
 
 export class InstitutionDto {
     @IsNumber()
     @IsOptional()
+    @Min(1)
     id: number;
 
     @IsString()

@@ -3,12 +3,14 @@ import {
   IsOptional,
   IsString,
   MaxLength,
+  Min,
   MinLength,
 } from 'class-validator';
 
 export class SubjectTypeDto {
   @IsNumber()
   @IsOptional()
+  @Min(1)
   id: number;
 
   @IsString()
