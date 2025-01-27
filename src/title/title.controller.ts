@@ -22,8 +22,8 @@ export class TitleController {
   }
 
   @Get('/:id')
-  async getById(@Param('id') id: string): Promise<TitleDto | null> {
-    const title = await this.titleService.getById(+id);
+  async getById(@Param('id') id: number): Promise<TitleDto | null> {
+    const title = await this.titleService.getById(id);
 
     return title;
   }
@@ -37,14 +37,16 @@ export class TitleController {
 
   @Put()
   async update(@Body() title: TitleDto): Promise<TitleDto | null> {
+    if(!title.id) return null;
+
     const updatedTitle = await this.titleService.update(title);
 
     return updatedTitle;
   }
 
   @Delete('/:id')
-  async delete(@Param('id') id: string): Promise<TitleDto | null> {
-    const deletedTitle = await this.titleService.delete(+id);
+  async delete(@Param('id') id: number): Promise<TitleDto | null> {
+    const deletedTitle = await this.titleService.delete(id);
 
     return deletedTitle;
   }

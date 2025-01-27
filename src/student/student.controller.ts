@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { StudentService } from './student.service';
 import { StudentDto } from './student.dto';
 
@@ -13,8 +21,8 @@ export class StudentController {
   }
 
   @Get('/:id')
-  async getById(@Param('id') id: string): Promise<StudentDto | null> {
-    const student = await this.studentService.getById(+id);
+  async getById(@Param('id') id: number): Promise<StudentDto | null> {
+    const student = await this.studentService.getById(id);
     return student;
   }
 
@@ -27,14 +35,16 @@ export class StudentController {
 
   @Put()
   async update(@Body() student: StudentDto): Promise<StudentDto | null> {
+    if (!student.id) return null;
+    
     const updatedStudent = await this.studentService.update(student);
 
     return updatedStudent;
   }
 
   @Delete('/:id')
-  async delete(@Param('id') id: string): Promise<StudentDto | null> {
-    const deletedStudent = await this.studentService.delete(+id);
+  async delete(@Param('id') id: number): Promise<StudentDto | null> {
+    const deletedStudent = await this.studentService.delete(id);
 
     return deletedStudent;
   }
