@@ -6,9 +6,10 @@ import { DbModule } from './db/db.module';
 import { TeacherModule } from './teacher/teacher.module';
 import { TitleModule } from './title/title.module';
 import { InstitutionModule } from './institution/institution.module';
+import { CourseTypeModule } from './course_type/course_type.module';
 
 @Module({
-  imports: [StudentModule, DbModule, TeacherModule, TitleModule, InstitutionModule],
+  imports: [StudentModule, DbModule, TeacherModule, TitleModule, InstitutionModule, CourseTypeModule],
   controllers: [AppController],
   providers: [AppService],
 })
