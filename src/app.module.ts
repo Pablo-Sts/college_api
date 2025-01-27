@@ -8,9 +8,11 @@ import { TitleModule } from './title/title.module';
 import { InstitutionModule } from './institution/institution.module';
 import { CourseTypeModule } from './course_type/course_type.module';
 import { CourseModule } from './course/course.module';
+import { SubjectTypeModule } from './subject_type/subject_type.module';
+import { SubjectModule } from './subject/subject.module';
 
 @Module({
-  imports: [StudentModule, DbModule, TeacherModule, TitleModule, InstitutionModule, CourseTypeModule, CourseModule],
+  imports: [StudentModule, DbModule, TeacherModule, TitleModule, InstitutionModule, CourseTypeModule, CourseModule, SubjectTypeModule, SubjectModule],
   controllers: [AppController],
   providers: [AppService],
 })
