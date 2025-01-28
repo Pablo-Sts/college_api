@@ -33,7 +33,13 @@ export class InstructService {
     return instructBySubject;
   }
 
-  async create(instruct: InstructDto): Promise<InstructDto> {
+  async create(instruct: InstructDto): Promise<InstructDto | null> {
+    const instructAlredyExists = await this.instructRepository.findOne({
+      where: instruct,
+    });
+
+    if(instructAlredyExists) return null;
+
     const newInstruct = await this.instructRepository.save(instruct);
 
     return newInstruct;
