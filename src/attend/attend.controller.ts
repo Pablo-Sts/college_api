@@ -72,6 +72,6 @@ export class AttendController {
   async delete(@Body() attend: AttendDto): Promise<AttendDto | null> {
     const deletedAttend = await this.attendService.delete(attend);
 
-    return attend;
+    return deletedAttend;
   }
 }
