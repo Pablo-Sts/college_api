@@ -6,66 +6,83 @@ import { AttendEntity } from 'src/db/entities/attend.entity';
 
 @Injectable()
 export class AttendService {
-    constructor(@InjectRepository(AttendEntity) private readonly attendRepository: Repository<AttendEntity>) {}
+  constructor(
+    @InjectRepository(AttendEntity)
+    private readonly attendRepository: Repository<AttendEntity>,
+  ) {}
 
-    async getAll(): Promise<AttendDto[]> {
-        const attends = await this.attendRepository.find();
+  async getAll(): Promise<AttendDto[]> {
+    const attends = await this.attendRepository.find();
 
-        return attends;
-    }
+    return attends;
+  }
 
-    async getByStudent(studentId: number): Promise<AttendDto[]> {
-        const attendByStudent = await this.attendRepository.find({where: {studentId}});
+  async getByStudent(studentId: number): Promise<AttendDto[]> {
+    const attendByStudent = await this.attendRepository.find({
+      where: { studentId },
+    });
 
-        return attendByStudent;
-    }
+    return attendByStudent;
+  }
 
-    async getBySubject(subjectId: number): Promise<AttendDto[]> {
-        const attendBySubject = await this.attendRepository.find({where: {subjectId}});
+  async getBySubject(subjectId: number): Promise<AttendDto[]> {
+    const attendBySubject = await this.attendRepository.find({
+      where: { subjectId },
+    });
 
-        return attendBySubject;
-    }
+    return attendBySubject;
+  }
 
-    async getByYear(year: number): Promise<AttendDto[]> {
-        const attendByYear = await this.attendRepository.find({where: {year}});
+  async getByYear(year: number): Promise<AttendDto[]> {
+    const attendByYear = await this.attendRepository.find({ where: { year } });
 
-        return attendByYear;
-    }
+    return attendByYear;
+  }
 
-    async getBySemester(semester: number): Promise<AttendDto[]> {
-        const attendBySemester = await this.attendRepository.find({where: {semester}});
+  async getBySemester(semester: number): Promise<AttendDto[]> {
+    const attendBySemester = await this.attendRepository.find({
+      where: { semester },
+    });
 
-        return attendBySemester;
-    }
+    return attendBySemester;
+  }
 
-    async create(attend: AttendDto): Promise<AttendDto | null> {
-        const attendAlredyExists = await this.attendRepository.findOne({where: attend});
+  async create(attend: AttendDto): Promise<AttendDto | null> {
+    const attendAlredyExists = await this.attendRepository.findOne({
+      where: attend,
+    });
 
-        if(attendAlredyExists) return null;
+    if (attendAlredyExists) return null;
 
-        const createdAttend = await this.attendRepository.save(attend);
+    const createdAttend = await this.attendRepository.save(attend);
 
-        return createdAttend;
-    }
+    return createdAttend;
+  }
 
-    async update(attend: AttendDto, newAttend: AttendDto): Promise<AttendDto | null> {
-        const attendAlredyExists = await this.attendRepository.findOne({where: attend});
+  async update(
+    attend: AttendDto,
+    newAttend: AttendDto,
+  ): Promise<AttendDto | null> {
+    const attendAlredyExists = await this.attendRepository.findOne({
+      where: attend,
+    });
 
-        if(!attendAlredyExists) return null;
+    if (!attendAlredyExists) return null;
 
-        await this.attendRepository.update(attend, newAttend);
+    await this.attendRepository.update(attend, newAttend);
 
-        return newAttend;
-    }
+    return newAttend;
+  }
 
-    async delete(attend: AttendDto): Promise<AttendDto | null> {
-        const attendAlredyExists = await this.attendRepository.findOne({where: attend});
+  async delete(attend: AttendDto): Promise<AttendDto | null> {
+    const attendAlredyExists = await this.attendRepository.findOne({
+        where: attend,
+      });
 
-        if(!attendAlredyExists) return null;
+    if (!attendAlredyExists) return null;
 
-        await this.attendRepository.delete(attend);
+    await this.attendRepository.delete(attend);
 
-        return attend;
-    }
-
+    return attend;
+  }
 }
