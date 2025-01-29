@@ -20,6 +20,13 @@ export class SubjectController {
         return subject;
     }
 
+    @Get("/course/:id")
+    async getByCourse(@Param("id") courseId: number): Promise<SubjectDto[]> {
+        const subjectsByCourse = await this.subjectService.getByCourse(courseId);
+
+        return subjectsByCourse;
+    }
+
     @Post()
     async create(@Body() subject: SubjectDto): Promise<SubjectDto> {
         const newSubject = await this.subjectService.create(subject);

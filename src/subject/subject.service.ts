@@ -23,6 +23,12 @@ export class SubjectService {
     return subject;
   }
 
+  async getByCourse(courseId: number): Promise<SubjectDto[]> {
+    const subjectsByCourse = await this.subjectRepository.find({where: {courseId}});
+
+    return subjectsByCourse;
+  }
+
   async create(subject: SubjectDto): Promise<SubjectDto> {
     const newSubject = await this.subjectRepository.save(subject);
 
