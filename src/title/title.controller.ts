@@ -37,7 +37,7 @@ export class TitleController {
 
   @Put()
   async update(@Body() title: TitleDto): Promise<TitleDto | null> {
-    if(!title.id) return null;
+    if (!title.id) return null;
 
     const updatedTitle = await this.titleService.update(title);
 
@@ -46,8 +46,12 @@ export class TitleController {
 
   @Delete('/:id')
   async delete(@Param('id') id: number): Promise<TitleDto | null> {
-    const deletedTitle = await this.titleService.delete(id);
+    try {
+      const deletedTitle = await this.titleService.delete(id);
 
-    return deletedTitle;
+      return deletedTitle;
+    } catch (error) {
+      return null;
+    }
   }
 }

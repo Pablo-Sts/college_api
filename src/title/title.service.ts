@@ -42,12 +42,16 @@ export class TitleService {
   }
 
   async delete(id: number): Promise<TitleDto | null> {
-    const title = await this.getById(id);
-
-    if (!title) return null;
-
-    await this.titleRepository.delete(id);
-
-    return title;
+    try {
+      const title = await this.getById(id);
+  
+      if (!title) return null;
+  
+      await this.titleRepository.delete(id);
+  
+      return title;
+    } catch (error) {
+      return null;
+    }
   }
 }
