@@ -77,7 +77,7 @@ A college_api foi desenvolvida como requisito para a disciplina de Programação
 
 ## Preview
 
-![Requisição na endpoint de cursos](./.gitassets/1.png)
+![Requisição na endpoint de cursos](./.gitassets/2.png)
 
 ## Links úteis
 
